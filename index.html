@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject = t;
+            var ttq = w[t] = w[t] || [];
+            ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"];
+            ttq.setAndDefer = function (t, e) {
+                t[e] = function () {
+                    t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                };
+            };
+            for (var i = 0; i < ttq.methods.length; i++) {
+                ttq.setAndDefer(ttq, ttq.methods[i]);
+            }
+            ttq.instance = function (t) {
+                var e = ttq._i[t] || [];
+                for (var n = 0; n < ttq.methods.length; n++) {
+                    ttq.setAndDefer(e, ttq.methods[n]);
+                }
+                return e;
+            };
+            ttq.load = function (e, n) {
+                var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
+                ttq._i = ttq._i || {};
+                ttq._i[e] = [];
+                ttq._i[e]._u = r;
+                ttq._t = ttq._t || {};
+                ttq._t[e] = +new Date;
+                ttq._o = ttq._o || {};
+                ttq._o[e] = n || {};
+                var script = d.createElement("script");
+                script.type = "text/javascript";
+                script.async = true;
+                script.src = r + "?sdkid=" + e + "&lib=" + t;
+                var firstScript = d.getElementsByTagName("script")[0];
+                firstScript.parentNode.insertBefore(script, firstScript);
+            };
+
+            ttq.load('DAQ212BC77UFN7D6CP9G');
+            ttq.page();
+        }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <title>Falling Pickaxe — пиксельная аркада</title>
+    <meta name="description" content="Falling Pickaxe — пиксельная аркада о падающей кирке. Промокод для перехода: KIRKA42.">
+    <meta name="theme-color" content="#21381d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #07090d;
+            --bg-panel: #111722;
+            --bg-panel-soft: #171f2c;
+            --line: rgba(255, 255, 255, 0.1);
+            --line-strong: rgba(255, 255, 255, 0.18);
+            --text-main: #ffffff;
+            --text-muted: #a9b3c4;
+            --green: #4df42d;
+            --green-dark: #179a35;
+            --red: #ff3f55;
+            --gold: #ffd15c;
+            --blue: #4aa3ff;
+            --shadow-green: rgba(77, 244, 45, 0.34);
+            --shadow-red: rgba(255, 63, 85, 0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 0;
+            margin: 0;
+            background:
+                radial-gradient(circle at 18% 0%, rgba(77, 244, 45, 0.11), transparent 28rem),
+                radial-gradient(circle at 90% 20%, rgba(74, 163, 255, 0.12), transparent 24rem),
+                linear-gradient(180deg, #080b11 0%, var(--bg-main) 44%, #050609 100%);
+            color: var(--text-main);
+            font-family: "Inter", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button,
+        a {
+            touch-action: manipulation;
+        }
+
+        .site-shell {
+            min-height: 100vh;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: min(100%, 1040px);
+            min-height: 70px;
+            margin: 0 auto;
+            padding: 10px 18px;
+        }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            min-width: 0;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: min(260px, 56vw);
+            height: 48px;
+            object-fit: contain;
+            object-position: left center;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex: 0 0 auto;
+        }
+
+        .social-link {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            text-decoration: none;
+            transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease;
+        }
+
+        .social-link:hover {
+            border-color: rgba(255, 255, 255, 0.28);
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+
+        .social-link:active {
+            transform: scale(0.96);
+        }
+
+        .social-link svg {
+            display: block;
+            width: 36px;
+            height: 36px;
+        }
+
+        .app-container {
+            width: min(100%, 680px);
+            margin: 0 auto;
+            padding: 20px 16px 54px;
+        }
+
+        .hero-panel {
+            display: grid;
+            gap: 16px;
+        }
+
+        .offer-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(150px, 190px) minmax(0, 1fr);
+            gap: 16px;
+            align-items: stretch;
+            padding: 12px;
+            border: 1px solid rgba(74, 163, 255, 0.26);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(20, 29, 45, 0.96), rgba(10, 12, 18, 0.98));
+            box-shadow: 0 22px 58px rgba(0, 0, 0, 0.36);
+        }
+
+        .offer-image-link {
+            display: block;
+            border-radius: 14px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .offer-card:hover .offer-img {
+            transform: scale(1.025);
+        }
+
+        .offer-media {
+            position: relative;
+            overflow: hidden;
+            min-height: 210px;
+            border-radius: 14px;
+            background: #030713;
+        }
+
+        .offer-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 220ms ease;
+        }
+
+        .offer-media picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .offer-body {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            padding: 2px 0;
+        }
+
+        .offer-title {
+            margin: 0 0 13px;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .offer-kicker {
+            margin: 0 0 8px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .offer-bonuses {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+            margin-bottom: 10px;
+        }
+
+        .offer-bonus {
+            min-height: 70px;
+            padding: 12px 10px;
+            border-radius: 8px;
+            background: linear-gradient(180deg, #ffd327, #ffbd00);
+            color: #05070a;
+            text-align: center;
+        }
+
+        .offer-bonus strong {
+            display: block;
+            font-size: 24px;
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .offer-bonus span {
+            display: block;
+            margin-top: 5px;
+            font-size: 11px;
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .promo-code-box {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 12px;
+            min-height: 64px;
+            padding: 10px 13px;
+            border: 1px dashed rgba(255, 255, 255, 0.26);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .offer-hint {
+            margin: 10px 0 0;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .promo-code-label {
+            display: block;
+            margin-bottom: 2px;
+            color: rgba(255, 255, 255, 0.52);
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .promo-code-value {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+        }
+
+        .copy-code-btn {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #dce6f6;
+            cursor: pointer;
+            transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+        }
+
+        .copy-code-btn:hover {
+            background: rgba(77, 244, 45, 0.16);
+            color: var(--green);
+        }
+
+        .copy-code-btn:active {
+            transform: scale(0.94);
+        }
+
+        .copy-code-btn.is-copied {
+            background: rgba(77, 244, 45, 0.2);
+            color: var(--green);
+        }
+
+        .copy-code-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .offer-license {
+            margin: 12px 0 0;
+            color: rgba(255, 255, 255, 0.34);
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .info-card,
+        .promo-banner,
+        .help-panel {
+            border: 1px solid var(--line);
+            background: rgba(17, 23, 34, 0.86);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+        }
+
+        .btn-bonus:hover {
+            filter: brightness(1.08);
+        }
+
+        .btn-bonus:active,
+        .help-trigger:active {
+            transform: scale(0.98);
+        }
+
+        .btn-bonus::after {
+            content: "";
+            position: absolute;
+            top: -55%;
+            left: -70%;
+            width: 34%;
+            height: 210%;
+            background: rgba(255, 255, 255, 0.44);
+            transform: rotate(28deg);
+            animation: sheen 3.2s infinite;
+        }
+
+        .promo-banner {
+            position: relative;
+            overflow: hidden;
+            border-color: rgba(77, 244, 45, 0.48);
+            border-radius: 20px;
+            padding: 22px 16px;
+            text-align: center;
+            background:
+                linear-gradient(145deg, rgba(77, 244, 45, 0.16), transparent 45%),
+                linear-gradient(180deg, rgba(17, 23, 34, 0.96), rgba(8, 12, 18, 0.98));
+            box-shadow: 0 0 0 1px rgba(77, 244, 45, 0.1), 0 22px 54px rgba(0, 0, 0, 0.34);
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, transparent, rgba(77, 244, 45, 0.14), transparent);
+            opacity: 0.85;
+            animation: panel-glow 4s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .registration-banner .promo-label {
+            max-width: 440px;
+            margin-inline: auto;
+            color: #ffffff;
+            font-size: clamp(16px, 3.8vw, 22px);
+            line-height: 1.18;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.44);
+        }
+
+        .registration-banner .promo-amount {
+            margin-top: 6px;
+            font-size: clamp(44px, 10vw, 62px);
+        }
+
+        .registration-banner .btn-bonus {
+            background: linear-gradient(90deg, #6eff3e 0%, #26df67 48%, #00c9ff 100%);
+            color: #041007;
+            box-shadow: 0 18px 38px rgba(77, 244, 45, 0.34), 0 0 28px rgba(0, 201, 255, 0.18);
+        }
+
+        .registration-banner .btn-bonus::before {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            pointer-events: none;
+        }
+
+        .promo-label {
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .promo-amount {
+            margin: 0;
+            color: var(--green);
+            font-size: clamp(34px, 9vw, 46px);
+            line-height: 1;
+            font-weight: 900;
+            text-shadow: 0 0 24px rgba(77, 244, 45, 0.42);
+        }
+
+        .promo-sub {
+            display: block;
+            margin: 9px 0 14px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .timer-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 15px;
+            padding: 7px 13px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.28);
+            color: #d8e1ef;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .timer-val {
+            color: var(--red);
+        }
+
+        .btn-bonus {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 56px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #72ff4f 0%, #32ca4e 100%);
+            color: #071006;
+            font-size: 17px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 14px 28px rgba(77, 244, 45, 0.28);
+            transition: transform 180ms ease, filter 180ms ease;
+            animation: claim-pulse 2.1s infinite ease-in-out;
+        }
+
+        .mobile-quick-cta {
+            display: none;
+        }
+
+        .mobile-quick-cta.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(calc(100% + 24px));
+        }
+
+        .mobile-quick-title,
+        .mobile-quick-sub {
+            margin: 0;
+        }
+
+        .mobile-quick-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 16px;
+            overflow: hidden;
+            border-radius: 13px;
+            background: linear-gradient(90deg, #6eff3e 0%, #23df66 48%, #00c9ff 100%);
+            color: #041007;
+            font-size: 13px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 12px 28px rgba(77, 244, 45, 0.3), 0 0 22px rgba(0, 201, 255, 0.2);
+        }
+
+        .mobile-quick-btn::after {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -70%;
+            width: 34%;
+            height: 220%;
+            background: rgba(255, 255, 255, 0.42);
+            transform: rotate(28deg);
+            animation: sheen 3.2s infinite;
+        }
+
+        .info-card {
+            overflow: hidden;
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        .info-card.blue {
+            border-color: rgba(74, 163, 255, 0.48);
+        }
+
+        .info-card.gold {
+            border-color: rgba(255, 209, 92, 0.5);
+        }
+
+        .info-title {
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .info-title.blue {
+            color: var(--blue);
+        }
+
+        .info-title.gold {
+            color: var(--gold);
+        }
+
+        .info-img {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+        }
+
+        .info-link {
+            display: block;
+            border-radius: 14px;
+            text-decoration: none;
+        }
+
+        .info-link .info-img {
+            transition: transform 200ms ease, filter 200ms ease;
+        }
+
+        .info-link:hover .info-img {
+            filter: brightness(1.08);
+            transform: scale(1.01);
+        }
+
+        .help-panel {
+            overflow: hidden;
+            border-radius: 18px;
+            background: rgba(17, 23, 34, 0.9);
+        }
+
+        .help-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            min-height: 58px;
+            padding: 0 16px;
+            border: 0;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 900;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .help-icon {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(74, 163, 255, 0.16);
+            color: var(--blue);
+            flex: 0 0 auto;
+            transition: transform 180ms ease;
+        }
+
+        .help-trigger[aria-expanded="true"] .help-icon {
+            transform: rotate(180deg);
+        }
+
+        .help-content {
+            display: none;
+            padding: 0 16px 16px;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .help-content.is-open {
+            display: block;
+        }
+
+        .help-list {
+            margin: 0;
+            padding-left: 19px;
+        }
+
+        .help-list li + li {
+            margin-top: 6px;
+        }
+
+        .site-footer {
+            margin-top: 22px;
+            padding: 8px 0 2px;
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .footer-note {
+            max-width: 560px;
+            margin: 12px auto 0;
+            color: rgba(255, 255, 255, 0.46);
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .responsible-note {
+            max-width: 560px;
+            margin: 12px auto 0;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.055);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .footer-link {
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            cursor: pointer;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .privacy-page {
+            display: none;
+            width: min(100%, 760px);
+            margin: 0 auto;
+            padding: 24px 16px 56px;
+        }
+
+        .privacy-page.is-open {
+            display: block;
+        }
+
+        .privacy-card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(17, 23, 34, 0.92);
+            box-shadow: 0 22px 58px rgba(0, 0, 0, 0.36);
+            text-align: center;
+        }
+
+        .privacy-head {
+            padding: 26px 18px 22px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .privacy-updated {
+            margin: 0 0 16px;
+            color: #dce6f6;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .privacy-title {
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(28px, 7vw, 44px);
+            font-weight: 900;
+            line-height: 1.05;
+        }
+
+        .privacy-lead {
+            margin: 14px auto 0;
+            max-width: 560px;
+            color: #d5deeb;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .privacy-body {
+            padding: 24px 18px 18px;
+        }
+
+        .privacy-section + .privacy-section {
+            margin-top: 26px;
+        }
+
+        .privacy-section h3 {
+            margin: 0 0 12px;
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 900;
+        }
+
+        .privacy-section p {
+            max-width: 620px;
+            margin: 0 auto;
+            color: #d7e1f0;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.65;
+        }
+
+        .privacy-questions {
+            display: grid;
+            gap: 10px;
+            margin-top: 22px;
+            text-align: left;
+        }
+
+        .privacy-question {
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .privacy-question strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .privacy-question span {
+            color: #d7e1f0;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .privacy-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            margin-top: 24px;
+            padding: 0 24px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #6eff3e 0%, #26df67 48%, #00c9ff 100%);
+            color: #041007;
+            font-size: 14px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        @keyframes sheen {
+            0% {
+                left: -70%;
+            }
+
+            18% {
+                left: 125%;
+            }
+
+            100% {
+                left: 125%;
+            }
+        }
+
+        @keyframes claim-pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 14px 28px rgba(77, 244, 45, 0.24);
+            }
+
+            50% {
+                transform: scale(1.025);
+                box-shadow: 0 18px 34px rgba(77, 244, 45, 0.36);
+            }
+        }
+
+        @keyframes panel-glow {
+            0%,
+            100% {
+                transform: translateX(-80%);
+            }
+
+            50% {
+                transform: translateX(80%);
+            }
+        }
+
+        @keyframes arrow-bounce {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(12px, -16px);
+            }
+        }
+
+        @media (max-width: 620px) {
+            .app-container {
+                padding-bottom: 120px;
+            }
+
+            .mobile-quick-cta {
+                position: fixed;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                z-index: 80;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                align-items: center;
+                gap: 10px;
+                opacity: 1;
+                padding: 10px;
+                padding-bottom: calc(10px + env(safe-area-inset-bottom));
+                border: 1px solid rgba(77, 244, 45, 0.38);
+                border-radius: 18px;
+                background: rgba(6, 12, 16, 0.92);
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.48), 0 0 24px rgba(77, 244, 45, 0.18);
+                backdrop-filter: blur(14px);
+                transform: translateY(0);
+                transition: opacity 180ms ease, transform 220ms ease;
+            }
+
+            .mobile-quick-title {
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 900;
+                line-height: 1.1;
+            }
+
+            .mobile-quick-sub {
+                margin-top: 3px;
+                color: rgba(255, 255, 255, 0.66);
+                font-size: 11px;
+                font-weight: 800;
+                line-height: 1.2;
+            }
+
+            .offer-card {
+                grid-template-columns: 1fr;
+                gap: 13px;
+                padding: 11px;
+            }
+
+            .offer-image-link {
+                border-radius: 14px;
+            }
+
+            .offer-media {
+                height: 360px;
+                min-height: 320px;
+            }
+
+            .offer-body {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .header-inner {
+                min-height: 62px;
+                padding-inline: 12px;
+            }
+
+            .brand-logo {
+                width: min(210px, 58vw);
+                height: 40px;
+            }
+
+            .social-links {
+                gap: 9px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-link svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .app-container {
+                padding: 16px 12px 42px;
+            }
+
+            .offer-title {
+                margin-bottom: 13px;
+                font-size: 16px;
+            }
+
+            .offer-media {
+                height: 320px;
+                min-height: 300px;
+            }
+
+            .offer-bonuses {
+                gap: 8px;
+            }
+
+            .offer-bonus {
+                min-height: 64px;
+                padding: 11px 8px;
+            }
+
+            .offer-bonus strong {
+                font-size: 21px;
+            }
+
+            .promo-code-value {
+                font-size: 18px;
+            }
+
+            .promo-banner {
+                padding: 20px 13px;
+            }
+        }
+
+        /* Falling Pickaxe visual theme */
+        :root {
+            --bg-main: #090b1d;
+            --bg-panel: #171a38;
+            --bg-panel-soft: #20254c;
+            --line: #343a72;
+            --line-strong: #6ce9e2;
+            --text-main: #f8fbff;
+            --text-muted: #c6cce8;
+            --green: #49e6d4;
+            --green-dark: #148f94;
+            --red: #ff7896;
+            --gold: #ffbd55;
+            --blue: #7e8cff;
+            --shadow-green: rgba(73, 230, 212, 0.28);
+            --shadow-red: rgba(255, 120, 150, 0.24);
+            --pixel-font: "Manrope", Arial, sans-serif;
+            --display-font: "Unbounded", "Manrope", Arial, sans-serif;
+        }
+
+        html {
+            background: #090b1d;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #090b1d;
+            background-image:
+                radial-gradient(circle at 20% 8%, rgba(108, 233, 226, 0.18), transparent 34rem),
+                linear-gradient(rgba(8, 10, 30, 0.36), rgba(7, 9, 24, 0.88)),
+                url("falling-pickaxe-bg.webp");
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--pixel-font);
+            text-shadow: none;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            background-size: 8px 8px;
+            image-rendering: pixelated;
+        }
+
+        .site-shell {
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            image-rendering: auto;
+        }
+
+        .site-header {
+            position: relative;
+            top: auto;
+            background-color: rgba(9, 11, 29, 0.86);
+            background-image:
+                linear-gradient(90deg, transparent, rgba(108, 233, 226, 0.18), transparent),
+                linear-gradient(90deg, rgba(126, 140, 255, 0.12), rgba(255, 189, 85, 0.08));
+            border: 0;
+            border-bottom: 1px solid rgba(108, 233, 226, 0.35);
+            box-shadow: 0 10px 34px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(16px);
+        }
+
+        .header-inner {
+            width: min(100%, 680px);
+            min-height: 76px;
+        }
+
+        .brand-link {
+            gap: 10px;
+            padding: 9px 14px;
+            border: 1px solid rgba(108, 233, 226, 0.45);
+            border-radius: 14px;
+            background: rgba(15, 18, 47, 0.72);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 24px rgba(0,0,0,.22);
+            font-family: var(--display-font);
+            letter-spacing: .05em;
+        }
+
+        .brand-mark {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #6ce9e2, #7e8cff);
+            box-shadow: 0 0 18px rgba(108,233,226,.72);
+            transform: rotate(45deg);
+        }
+
+        .brand-wordmark {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .age-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 36px;
+            border: 1px solid rgba(255, 189, 85, 0.5);
+            border-radius: 999px;
+            background: rgba(255, 189, 85, 0.1);
+            color: #ffcf7a;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #172819;
+            border-radius: 0;
+            background: #438f40;
+            box-shadow: inset 3px 3px 0 #72bd63, inset -3px -3px 0 #245925, 4px 4px 0 rgba(0, 0, 0, 0.42);
+        }
+
+        .social-link:hover {
+            border-color: #172819;
+            filter: brightness(1.14);
+            transform: translateY(-2px);
+        }
+
+        .social-link:active {
+            transform: translate(3px, 3px);
+            box-shadow: inset 3px 3px 0 #245925;
+        }
+
+        .app-container {
+            padding-top: 28px;
+        }
+
+        .hero-panel {
+            gap: 22px;
+        }
+
+        .offer-card,
+        .promo-banner,
+        .info-card,
+        .gameplay-card,
+        .help-panel,
+        .privacy-card {
+            border: 1px solid rgba(126, 140, 255, 0.5);
+            border-radius: 26px;
+            background-color: rgba(18, 21, 51, 0.92);
+            background-image:
+                linear-gradient(135deg, rgba(108, 233, 226, 0.08), transparent 42%),
+                linear-gradient(315deg, rgba(255, 189, 85, 0.06), transparent 38%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                0 24px 70px rgba(2, 4, 18, 0.48);
+            backdrop-filter: blur(18px);
+        }
+
+        .offer-card {
+            grid-template-columns: minmax(210px, 42%) minmax(0, 1fr);
+            gap: 18px;
+            padding: 18px;
+        }
+
+        .offer-image-link,
+        .offer-media,
+        .info-link,
+        .info-img {
+            border-radius: 20px;
+        }
+
+        .offer-image-link {
+            align-self: stretch;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .offer-image-link,
+        .info-link {
+            border: 1px solid rgba(108, 233, 226, 0.55);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34), inset 0 0 0 1px rgba(255,255,255,.06);
+        }
+
+        .offer-media {
+            height: 100%;
+            min-height: 100%;
+            background: #090b1d;
+        }
+
+        .offer-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .offer-title,
+        .registration-banner .promo-label,
+        .info-title,
+        .help-trigger,
+        .privacy-title {
+            text-shadow: none;
+            font-family: var(--display-font);
+        }
+
+        .offer-title {
+            margin-bottom: 15px;
+            font-size: clamp(17px, 2.7vw, 22px);
+            line-height: 1.45;
+        }
+
+        .offer-kicker,
+        .promo-label {
+            color: #6ce9e2;
+            font-size: 13px;
+            line-height: 1.6;
+            letter-spacing: 0;
+        }
+
+        .offer-bonuses {
+            gap: 10px;
+        }
+
+        .offer-bonus {
+            min-height: 78px;
+            padding: 13px 8px;
+            border: 1px solid rgba(255, 189, 85, 0.55);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(255, 189, 85, 0.18), rgba(126, 140, 255, 0.08));
+            color: #fff8e8;
+            text-shadow: none;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        .offer-bonus strong {
+            font-size: 18px;
+            line-height: 1.2;
+        }
+
+        .offer-bonus span {
+            margin-top: 7px;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .promo-code-box {
+            min-height: 70px;
+            border: 1px solid rgba(108, 233, 226, 0.6);
+            border-radius: 18px;
+            background: rgba(9, 12, 34, 0.76);
+            box-shadow: inset 0 0 24px rgba(108, 233, 226, 0.08);
+        }
+
+        .promo-code-label {
+            color: #e3efd9;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .promo-code-value {
+            color: #ffffff;
+            font-size: 20px;
+            text-shadow: none;
+        }
+
+        .copy-code-btn,
+        .help-icon {
+            border: 1px solid rgba(126, 140, 255, 0.65);
+            border-radius: 12px;
+            background: #292f64;
+            color: #ffffff;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+        }
+
+        .offer-hint,
+        .offer-license,
+        .promo-sub,
+        .help-content {
+            color: #dddddd;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .promo-banner {
+            padding: 26px 20px;
+            overflow: visible;
+            border-color: rgba(255, 189, 85, 0.72);
+            background-color: rgba(31, 24, 58, 0.94);
+            background-image:
+                radial-gradient(circle at 20% 0%, rgba(255,189,85,.2), transparent 34%),
+                linear-gradient(125deg, rgba(126,140,255,.14), rgba(9,11,29,.18));
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, .1),
+                0 24px 70px rgba(2, 4, 18, 0.48);
+        }
+
+        .promo-banner::before,
+        .btn-bonus::after,
+        .mobile-quick-btn::after {
+            display: none;
+        }
+
+        .registration-banner .promo-label {
+            color: #ffffff;
+            font-size: clamp(14px, 2.7vw, 18px);
+            line-height: 1.65;
+        }
+
+        .registration-banner .promo-amount,
+        .promo-amount {
+            margin-top: 12px;
+            color: #ffcf7a;
+            font-size: clamp(26px, 6vw, 40px);
+            line-height: 1.3;
+            text-shadow: 0 0 28px rgba(255,189,85,.28);
+            font-family: var(--display-font);
+        }
+
+        .promo-sub {
+            margin: 12px 0 16px;
+        }
+
+        .timer-wrap {
+            padding: 9px 11px;
+            border: 1px solid rgba(126, 140, 255, 0.45);
+            border-radius: 999px;
+            background: rgba(8, 10, 28, 0.7);
+            color: #eeeeee;
+            font-size: 13px;
+            line-height: 1.5;
+            box-shadow: inset 2px 2px 0 #5f5f5f, inset -2px -2px 0 #101010;
+        }
+
+        .btn-bonus,
+        .mobile-quick-btn,
+        .privacy-home {
+            min-height: 58px;
+            border: 1px solid #7df4e9;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #49e6d4, #7e8cff);
+            color: #07091b;
+            font-family: var(--pixel-font);
+            font-size: 15px;
+            line-height: 1.45;
+            text-shadow: none;
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.42),
+                0 14px 34px rgba(73,230,212,.24);
+            animation: pickaxe-pulse 2.8s ease-in-out infinite;
+        }
+
+        .btn-bonus:hover,
+        .mobile-quick-btn:hover,
+        .privacy-home:hover {
+            filter: brightness(1.16);
+        }
+
+        .btn-bonus:active,
+        .mobile-quick-btn:active,
+        .privacy-home:active {
+            transform: translateY(5px);
+            box-shadow: inset 4px 4px 0 #2f6f20, 0 2px 0 #193416;
+        }
+
+        .info-card {
+            padding: 19px;
+        }
+
+        .info-card.blue {
+            border-color: #153e45;
+            background-color: #287a83;
+            background-image:
+                linear-gradient(45deg, rgba(85, 255, 255, 0.22) 25%, transparent 25% 75%, rgba(85, 255, 255, 0.22) 75%),
+                linear-gradient(45deg, rgba(8, 65, 73, 0.32) 25%, transparent 25% 75%, rgba(8, 65, 73, 0.32) 75%);
+            background-position: 0 0, 8px 8px;
+            background-size: 16px 16px;
+            box-shadow: inset 0 0 0 4px #4fc5cc, inset 0 0 0 8px #1b5962, 9px 9px 0 rgba(0, 0, 0, 0.48);
+        }
+
+        .info-card.gold {
+            border-color: #5e4510;
+            background-color: #b68d25;
+            background-image:
+                linear-gradient(90deg, rgba(255, 232, 95, 0.28) 50%, transparent 50%),
+                linear-gradient(rgba(126, 87, 13, 0.22) 50%, transparent 50%);
+            background-size: 16px 16px;
+            box-shadow: inset 0 0 0 4px #f5d652, inset 0 0 0 8px #836016, 9px 9px 0 rgba(0, 0, 0, 0.48);
+        }
+
+        .info-title {
+            margin-bottom: 15px;
+            color: #ffffff !important;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .info-img {
+            border: 0;
+        }
+
+        .gameplay-card {
+            overflow: hidden;
+            padding: 19px;
+            border-color: rgba(108, 233, 226, 0.5);
+            background-color: rgba(16, 19, 47, 0.94);
+            background-image:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(0, 0, 0, 0.16) 25%, transparent 25%);
+            background-position: 0 0, 8px 8px;
+            background-size: 16px 16px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 24px 70px rgba(2,4,18,.48);
+        }
+
+        .gameplay-title {
+            margin: 2px 0 17px;
+            color: #6ce9e2;
+            font-size: 17px;
+            line-height: 1.55;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: none;
+            font-family: var(--display-font);
+        }
+
+        .gameplay-frame {
+            overflow: hidden;
+            max-width: 520px;
+            margin: 0 auto;
+            border: 1px solid rgba(126,140,255,.5);
+            border-radius: 18px;
+            background: #090b1d;
+            box-shadow: 0 18px 40px rgba(0,0,0,.34);
+        }
+
+        .gameplay-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .help-panel {
+            border-color: rgba(255,189,85,.48);
+            background-color: rgba(28, 24, 54, 0.94);
+            background-image: linear-gradient(135deg, rgba(255,189,85,.08), transparent 52%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 24px 70px rgba(2,4,18,.42);
+        }
+
+        .help-trigger {
+            min-height: 68px;
+            padding: 0 19px;
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .help-content {
+            padding: 0 20px 20px;
+            color: #f0e7d7;
+        }
+
+        .help-list li + li {
+            margin-top: 12px;
+        }
+
+        .site-footer {
+            margin-top: 28px;
+            padding: 18px 16px;
+            border: 4px solid #171717;
+            background: rgba(9, 11, 29, 0.86);
+            border-radius: 18px;
+            box-shadow: 0 18px 45px rgba(0,0,0,.34);
+            color: #cacaca;
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+        .footer-note,
+        .responsible-note,
+        .footer-link {
+            color: #d2d2d2;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .responsible-note,
+        .privacy-question {
+            border: 1px solid rgba(126, 140, 255, 0.42);
+            border-radius: 16px;
+            background: rgba(10, 13, 35, 0.7);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+        }
+
+        .privacy-page {
+            padding-top: 30px;
+        }
+
+        .privacy-card {
+            padding: 8px;
+        }
+
+        .privacy-head {
+            border-bottom: 4px solid #242424;
+        }
+
+        .privacy-title {
+            font-size: clamp(20px, 5vw, 34px);
+            line-height: 1.45;
+        }
+
+        .privacy-lead,
+        .privacy-section p,
+        .privacy-question span {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .privacy-section h3 {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @keyframes pickaxe-pulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.42), 0 18px 42px rgba(73,230,212,.32); }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                background-attachment: scroll;
+                background-position: center top;
+            }
+
+            .mobile-quick-cta {
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+                padding: 11px;
+                border: 1px solid rgba(108, 233, 226, 0.5);
+                border-radius: 18px;
+                background: rgba(12, 15, 40, 0.92);
+                box-shadow: 0 18px 46px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.08);
+                backdrop-filter: blur(16px);
+            }
+
+            .mobile-quick-title {
+                font-size: 14px;
+                line-height: 1.45;
+            }
+
+            .mobile-quick-sub {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .mobile-quick-btn {
+                min-height: 48px;
+                padding: 0 12px;
+                font-size: 13px;
+            }
+
+            .offer-card {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+
+            .offer-image-link {
+                border-radius: 18px;
+                height: auto;
+                min-height: 0;
+            }
+
+            .offer-media {
+                height: auto;
+                min-height: 0;
+                aspect-ratio: 1084 / 1451;
+            }
+
+            .offer-img {
+                object-fit: contain;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .header-inner {
+                min-height: 68px;
+            }
+
+            .brand-link {
+                padding: 5px 7px;
+            }
+
+            .social-link {
+                width: 42px;
+                height: 42px;
+            }
+
+            .app-container {
+                padding: 22px 10px 46px;
+            }
+
+            .offer-title {
+                font-size: 17px;
+                line-height: 1.5;
+            }
+
+            .offer-bonus strong {
+                font-size: 16px;
+            }
+
+            .offer-bonus span,
+            .promo-code-label,
+            .offer-hint,
+            .offer-license,
+            .promo-sub,
+            .help-content {
+                font-size: 13px;
+            }
+
+            .promo-code-value {
+                font-size: 14px;
+            }
+
+            .registration-banner .promo-label {
+                font-size: 14px;
+            }
+
+            .registration-banner .promo-amount {
+                font-size: 25px;
+            }
+
+            .btn-bonus {
+                font-size: 14px;
+            }
+        }
+
+        /* Universal phone layout: 320px–620px */
+        @media (max-width: 620px) {
+            .app-container {
+                width: 100%;
+                padding-top: clamp(14px, 4vw, 22px);
+                padding-right: clamp(8px, 3vw, 16px);
+                padding-bottom: calc(112px + env(safe-area-inset-bottom));
+                padding-left: clamp(8px, 3vw, 16px);
+            }
+
+            .hero-panel {
+                gap: clamp(15px, 4vw, 22px);
+            }
+
+            .offer-card,
+            .promo-banner,
+            .gameplay-card,
+            .help-panel,
+            .site-footer {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .offer-card {
+                grid-template-columns: minmax(0, 1fr);
+                gap: clamp(11px, 3vw, 16px);
+                padding: clamp(10px, 3.5vw, 16px);
+            }
+
+            .offer-image-link,
+            .offer-media,
+            .offer-media picture {
+                display: block;
+                width: 100%;
+                height: auto;
+                min-height: 0;
+                aspect-ratio: auto;
+            }
+
+            .offer-img {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+                transform: none;
+            }
+
+            .offer-card:hover .offer-img {
+                transform: none;
+            }
+
+            .offer-body {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .offer-title {
+                font-size: clamp(17px, 4.6vw, 20px);
+                line-height: 1.5;
+                overflow-wrap: anywhere;
+            }
+
+            .offer-kicker {
+                font-size: clamp(12px, 3vw, 14px);
+            }
+
+            .offer-bonuses {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: clamp(6px, 2vw, 10px);
+            }
+
+            .offer-bonus {
+                min-width: 0;
+                min-height: 66px;
+                padding: 11px 6px;
+            }
+
+            .offer-bonus strong {
+                font-size: clamp(14px, 4.7vw, 19px);
+                overflow-wrap: anywhere;
+            }
+
+            .offer-bonus span {
+                font-size: clamp(12px, 3vw, 13px);
+            }
+
+            .promo-code-box {
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 8px;
+                padding: 9px 10px;
+            }
+
+            .promo-code-value {
+                font-size: clamp(17px, 4.8vw, 20px);
+                overflow-wrap: anywhere;
+            }
+
+            .promo-banner {
+                padding: clamp(18px, 5vw, 26px) clamp(11px, 4vw, 20px);
+            }
+
+            .registration-banner .promo-label {
+                font-size: clamp(13px, 3.6vw, 16px);
+                line-height: 1.75;
+            }
+
+            .registration-banner .promo-amount {
+                font-size: clamp(22px, 8vw, 38px);
+                overflow-wrap: anywhere;
+            }
+
+            .promo-sub,
+            .timer-wrap {
+                font-size: clamp(12px, 3vw, 14px);
+                line-height: 1.7;
+            }
+
+            .timer-wrap {
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 100%;
+            }
+
+            .btn-bonus {
+                min-height: 54px;
+                padding: 8px;
+                font-size: clamp(14px, 3.6vw, 16px);
+                line-height: 1.55;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .gameplay-card {
+                padding: clamp(10px, 3.5vw, 19px);
+            }
+
+            .gameplay-title {
+                margin-bottom: clamp(10px, 3vw, 17px);
+                font-size: clamp(15px, 4vw, 18px);
+            }
+
+            .gameplay-frame,
+            .gameplay-img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .help-trigger {
+                padding-inline: clamp(11px, 4vw, 19px);
+                font-size: clamp(14px, 3.8vw, 16px);
+                line-height: 1.5;
+            }
+
+            .help-content {
+                padding-right: clamp(12px, 4vw, 20px);
+                padding-left: clamp(12px, 4vw, 20px);
+                overflow-wrap: anywhere;
+            }
+
+            .mobile-quick-cta {
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: clamp(6px, 2.5vw, 10px);
+                padding: clamp(8px, 2.8vw, 11px);
+            }
+
+            .mobile-quick-title {
+                font-size: clamp(13px, 3.4vw, 15px);
+                overflow-wrap: anywhere;
+            }
+
+            .mobile-quick-sub {
+                font-size: clamp(12px, 2.8vw, 13px);
+            }
+
+            .mobile-quick-btn {
+                min-height: 44px;
+                padding-inline: clamp(9px, 3vw, 12px);
+                font-size: clamp(13px, 3.2vw, 14px);
+            }
+        }
+
+        @media (max-width: 350px) {
+            .app-container {
+                padding-right: 7px;
+                padding-left: 7px;
+            }
+
+            .offer-card,
+            .promo-banner,
+            .gameplay-card,
+            .help-panel {
+                border-width: 4px;
+            }
+
+            .offer-bonuses {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .offer-bonus {
+                min-height: 58px;
+            }
+
+            .promo-code-box {
+                min-height: 62px;
+            }
+
+            .copy-code-btn {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        /* Classic Falling Pickaxe block-game theme */
+        :root {
+            --bg-main: #21381d;
+            --bg-panel: #454545;
+            --bg-panel-soft: #565656;
+            --line: #171717;
+            --line-strong: #bdbdbd;
+            --text-main: #ffffff;
+            --text-muted: #e1e1e1;
+            --green: #64b83d;
+            --green-dark: #2f6f20;
+            --gold: #f4ca3e;
+            --blue: #57c7d4;
+            --pixel-font: "Manrope", Arial, sans-serif;
+            --display-font: "Press Start 2P", "Courier New", monospace;
+        }
+
+        html {
+            background: #21381d;
+        }
+
+        body {
+            background-color: #21381d;
+            background-image:
+                linear-gradient(rgba(12, 24, 10, 0.2), rgba(7, 13, 6, 0.62)),
+                url("falling-pickaxe-classic-bg.webp");
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--pixel-font);
+        }
+
+        body::before {
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+                linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+
+        .site-header {
+            background-color: #3e2b1a;
+            background-image:
+                linear-gradient(90deg, transparent 0 48%, rgba(20, 12, 7, 0.25) 48% 52%, transparent 52%),
+                repeating-linear-gradient(0deg, #54391f 0 9px, #422d1c 9px 17px, #624326 17px 25px);
+            border-bottom: 5px solid #17100a;
+            box-shadow: inset 0 -3px 0 #7d5935, 0 7px 0 rgba(0, 0, 0, 0.34);
+            backdrop-filter: none;
+        }
+
+        .header-inner {
+            min-height: 76px;
+        }
+
+        .brand-link {
+            gap: 10px;
+            padding: 10px 13px;
+            border: 4px solid #21170e;
+            border-radius: 0;
+            background: #76512e;
+            box-shadow: inset 3px 3px 0 #a77b49, inset -3px -3px 0 #422c1a, 4px 4px 0 rgba(0,0,0,.35);
+            font-family: var(--display-font);
+        }
+
+        .brand-mark {
+            width: 14px;
+            height: 14px;
+            border-radius: 0;
+            background: #6ed34a;
+            box-shadow: inset 3px 3px 0 #9bf06e, inset -3px -3px 0 #347d25;
+        }
+
+        .brand-wordmark {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .age-chip {
+            min-width: 48px;
+            min-height: 42px;
+            border: 4px solid #1f1f1f;
+            border-radius: 0;
+            background: #686868;
+            color: #fff;
+            box-shadow: inset 3px 3px 0 #a4a4a4, inset -3px -3px 0 #353535;
+            font-family: var(--display-font);
+            font-size: 12px;
+        }
+
+        .app-container {
+            padding-top: 30px;
+        }
+
+        .offer-card,
+        .promo-banner,
+        .gameplay-card,
+        .help-panel,
+        .privacy-card {
+            border: 5px solid #171717;
+            border-radius: 0;
+            background-color: #484848;
+            background-image:
+                linear-gradient(135deg, rgba(255,255,255,.06) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(0,0,0,.13) 25%, transparent 25%);
+            background-position: 0 0, 8px 8px;
+            background-size: 16px 16px;
+            box-shadow: inset 0 0 0 4px #838383, inset 0 0 0 8px #303030, 9px 9px 0 rgba(0,0,0,.46);
+            backdrop-filter: none;
+        }
+
+        .offer-card {
+            grid-template-columns: minmax(210px, 42%) minmax(0, 1fr);
+            gap: 18px;
+            padding: 18px;
+        }
+
+        .offer-image-link,
+        .offer-media,
+        .gameplay-frame {
+            border-radius: 0;
+        }
+
+        .offer-image-link,
+        .gameplay-frame {
+            border: 4px solid #171717;
+            box-shadow: inset 0 0 0 3px #bcbcbc, 4px 4px 0 rgba(0,0,0,.45);
+        }
+
+        .offer-media,
+        .gameplay-frame {
+            background: #161616;
+        }
+
+        .offer-img,
+        .gameplay-img {
+            image-rendering: pixelated;
+        }
+
+        .offer-title,
+        .registration-banner .promo-label,
+        .gameplay-title,
+        .help-trigger,
+        .privacy-title {
+            font-family: var(--display-font);
+            text-shadow: 3px 3px 0 #202020;
+        }
+
+        .offer-title {
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .offer-kicker,
+        .promo-label {
+            color: #fff36a;
+            font-family: var(--display-font);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .offer-bonus {
+            min-height: 92px;
+            padding: 14px 10px;
+            border: 4px solid #5d4610;
+            border-radius: 0;
+            background-color: #e2b833;
+            background-image:
+                linear-gradient(90deg, rgba(255,245,152,.34) 50%, transparent 50%),
+                linear-gradient(rgba(255,245,152,.2) 50%, transparent 50%);
+            background-size: 12px 12px;
+            color: #2b2107;
+            text-shadow: 1px 1px 0 #fff092;
+            box-shadow: inset 3px 3px 0 #ffe36a, inset -3px -3px 0 #9b7018;
+        }
+
+        .offer-bonus strong {
+            font-family: var(--display-font);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .offer-bonus span {
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .game-rule-box {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 7px;
+            min-height: 74px;
+            padding: 13px 15px;
+            border: 4px solid #1e3d19;
+            background-color: #467b2d;
+            background-image:
+                linear-gradient(90deg, rgba(151,207,91,.18) 50%, transparent 50%),
+                linear-gradient(rgba(30,74,27,.28) 50%, transparent 50%);
+            background-size: 10px 10px;
+            box-shadow: inset 3px 3px 0 #75b84d, inset -3px -3px 0 #284e20;
+        }
+
+        .game-rule-label {
+            display: block;
+            color: #dff2d4;
+            font-family: var(--display-font);
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .game-rule-box strong {
+            display: block;
+            margin-top: 7px;
+            color: #ffffff;
+            font-family: var(--display-font);
+            font-size: 16px;
+            line-height: 1.35;
+            text-shadow: 2px 2px 0 #284e20;
+        }
+
+        .game-rule-box .copy-code-btn {
+            width: auto;
+            min-width: 112px;
+            height: 48px;
+            padding: 0 12px;
+            border: 3px solid #1d1d1d;
+            border-radius: 0;
+            background: #9b9b9b;
+            color: #ffffff;
+            font-family: var(--display-font);
+            font-size: 8px;
+            line-height: 1.4;
+            text-shadow: 2px 2px 0 #444;
+            box-shadow: inset 3px 3px 0 #dddddd, inset -3px -3px 0 #555555, 3px 3px 0 rgba(0,0,0,.35);
+            cursor: pointer;
+        }
+
+        .game-rule-box .copy-code-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: inset 3px 3px 0 #555555;
+        }
+
+        .game-rule-box .copy-code-btn.is-copied {
+            background: #e2b833;
+            color: #2b2107;
+            text-shadow: 1px 1px 0 #fff092;
+        }
+
+        .offer-hint,
+        .promo-sub,
+        .help-content {
+            color: #ededed;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .promo-banner {
+            padding: 28px 20px;
+            border-color: #162f12;
+            background-color: #3d7430;
+            background-image:
+                linear-gradient(90deg, rgba(104,159,69,.3) 50%, transparent 50%),
+                linear-gradient(rgba(31,74,27,.25) 50%, transparent 50%);
+            background-size: 14px 14px;
+            box-shadow: inset 0 0 0 4px #72a953, inset 0 0 0 8px #2a5322, 9px 9px 0 rgba(0,0,0,.48);
+        }
+
+        .registration-banner .promo-label {
+            color: #ffffff;
+            font-size: clamp(13px, 2.5vw, 16px);
+            line-height: 1.7;
+        }
+
+        .registration-banner .promo-amount,
+        .promo-amount {
+            margin-top: 14px;
+            color: #fff36a;
+            font-family: var(--display-font);
+            font-size: clamp(25px, 6vw, 38px);
+            line-height: 1.5;
+            text-shadow: 4px 4px 0 #365526;
+        }
+
+        .btn-bonus,
+        .mobile-quick-btn,
+        .privacy-home {
+            min-height: 58px;
+            border: 4px solid #193416;
+            border-radius: 0;
+            background: #55a832;
+            color: #ffffff;
+            font-family: var(--display-font);
+            font-size: 13px;
+            line-height: 1.5;
+            text-shadow: 2px 2px 0 #204817;
+            box-shadow: inset 4px 4px 0 #82d357, inset -4px -4px 0 #2f6f20, 0 6px 0 #193416, 0 10px 0 rgba(0,0,0,.32);
+            animation: none;
+        }
+
+        .gameplay-title {
+            color: #8ee45c;
+            font-size: 15px;
+            line-height: 1.7;
+            text-shadow: 3px 3px 0 #1f3d19;
+        }
+
+        .help-panel {
+            border-color: #25180d;
+            background-color: #654522;
+            background-image: repeating-linear-gradient(0deg, #654522 0 10px, #54381d 10px 18px, #76512a 18px 26px);
+            box-shadow: inset 0 0 0 4px #956a3a, inset 0 0 0 8px #422b17, 9px 9px 0 rgba(0,0,0,.48);
+        }
+
+        .help-trigger {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .help-icon {
+            border: 3px solid #1d1d1d;
+            border-radius: 0;
+            background: #9b9b9b;
+            box-shadow: inset 2px 2px 0 #ddd, inset -2px -2px 0 #555;
+        }
+
+        .site-footer {
+            border: 4px solid #171717;
+            border-radius: 0;
+            background: rgba(38,38,38,.94);
+            box-shadow: inset 3px 3px 0 #777, inset -3px -3px 0 #191919, 7px 7px 0 rgba(0,0,0,.42);
+            color: #dedede;
+        }
+
+        .mobile-quick-cta {
+            border: 4px solid #171717;
+            border-radius: 0;
+            background-color: #3e3e3e;
+            background-image:
+                linear-gradient(135deg, rgba(255,255,255,.06) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(0,0,0,.12) 25%, transparent 25%);
+            background-size: 14px 14px;
+            box-shadow: inset 3px 3px 0 #777, inset -3px -3px 0 #202020, 0 0 0 2px rgba(0,0,0,.5);
+            backdrop-filter: none;
+        }
+
+        @media (max-width: 620px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .offer-card {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-image-link {
+                border-radius: 0;
+            }
+
+            .offer-title {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .offer-bonus strong,
+            .game-rule-label {
+                font-size: 10px;
+            }
+
+            .game-rule-box .copy-code-btn {
+                min-width: 98px;
+                padding-inline: 8px;
+                font-size: 7px;
+            }
+
+            .offer-bonus span,
+            .offer-hint,
+            .promo-sub,
+            .help-content {
+                font-size: 14px;
+            }
+
+            .mobile-quick-title {
+                font-family: var(--display-font);
+                font-size: 11px;
+                line-height: 1.55;
+            }
+
+            .mobile-quick-sub {
+                font-size: 12px;
+            }
+
+            .mobile-quick-btn {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="site-shell" id="wrapper-site">
+        <header class="site-header" aria-hidden="true">
+            <div class="header-inner"></div>
+        </header>
+
+        <main class="app-container" id="home-page">
+            <div class="mobile-quick-cta" aria-label="Быстрый переход к предложению">
+                <div>
+                    <p class="mobile-quick-title">FALLING PICKAXE</p>
+                    <p class="mobile-quick-sub">Промокод: KIRKA42</p>
+                </div>
+                <a class="mobile-quick-btn" href="https://wndpr.bond/r/Sneket/R3D5XY?sub1=ads" onclick="trackBtn('click_mobile_play')">Играть</a>
+            </div>
+            <div class="hero-panel">
+                <section class="offer-card" aria-label="Игра Falling Pickaxe">
+                    <a class="offer-image-link" href="https://wndpr.bond/r/Sneket/R3D5XY?sub1=ads" aria-label="Запустить Falling Pickaxe" onclick="trackBtn('click_game_banner')">
+                        <div class="offer-media">
+                            <picture>
+                                <source srcset="falling-pickaxe-classic-mobile.webp" media="(max-width: 620px)">
+                                <img src="falling-pickaxe-classic-hero.webp" class="offer-img" alt="Пиксельная падающая кирка Falling Pickaxe" width="1084" height="1451">
+                            </picture>
+                        </div>
+                    </a>
+                    <div class="offer-body">
+                        <p class="offer-kicker">ЭКСКЛЮЗИВНЫЙ ДОСТУП</p>
+                        <h2 class="offer-title">Активируй промокод KIRKA42 и забери персональные бонусы для новых участников.</h2>
+                        <div class="offer-bonuses" aria-label="Промокод и подарок">
+                            <div class="offer-bonus">
+                                <strong>KIRKA42</strong>
+                                <span>Промокод уже готов</span>
+                            </div>
+                            <div class="offer-bonus">
+                                <strong>ПОДАРОК</strong>
+                                <span>После перехода</span>
+                            </div>
+                        </div>
+                        <div class="game-rule-box">
+                            <div>
+                                <span class="game-rule-label">ТВОЙ ПРОМОКОД</span>
+                                <strong id="promo-code">KIRKA42</strong>
+                            </div>
+                            <button class="copy-code-btn" type="button" id="copy-promo" aria-label="Скопировать промокод KIRKA42" title="Скопировать промокод">Копировать</button>
+                        </div>
+                        <p class="offer-hint">Нажми на баннер или кнопку ниже и активируй предложение.</p>
+                        <p class="offer-license">Lic. RN: 040422</p>
+                    </div>
+                </section>
+
+                <section class="promo-banner registration-banner" aria-label="Запуск Falling Pickaxe">
+                    <div class="promo-content">
+                        <div class="promo-label">ЗАВЕРШИ РЕГИСТРАЦИЮ И АКТИВИРУЙ ПРОМОКОД</div>
+                        <h1 class="promo-amount">KIRKA42 +360%</h1>
+                        <span class="promo-sub">Персональные бонусы для новых участников.</span>
+                        <div class="timer-wrap">До конца акции осталось... <span class="timer-val" id="registration-countdown" role="timer" aria-label="Обратный отсчёт">24:00:00</span></div>
+                        <a href="https://wndpr.bond/r/Sneket/R3D5XY?sub1=ads" class="btn-bonus" onclick="trackBtn('click_main_play')">Забрать бонус</a>
+                    </div>
+                </section>
+
+                <section class="gameplay-card" aria-label="Игровой процесс Falling Pickaxe">
+                    <h2 class="gameplay-title">Falling Pickaxe в действии</h2>
+                    <div class="gameplay-frame">
+                        <img src="falling-pickaxe-classic-gameplay.webp" class="gameplay-img" alt="Игровой процесс Falling Pickaxe с падающей киркой" width="713" height="924">
+                    </div>
+                </section>
+
+                <section class="help-panel">
+                    <button class="help-trigger" type="button" aria-expanded="false" aria-controls="hp" id="help-toggle">
+                        Как начать Falling Pickaxe?
+                        <span class="help-icon" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="help-content" id="hp">
+                        <ol class="help-list">
+                            <li>Скопируй промокод KIRKA42 и нажми «Забрать бонус».</li>
+                            <li>Следи за направлением падения кирки.</li>
+                            <li>Проходи через свободные проёмы и не касайся препятствий.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <footer class="site-footer">
+                    © 2026 Falling Pickaxe Guide
+                    <p class="footer-note">Фан-страница, посвящённая популярной игре про падающую кирку. Кнопки ведут на внешний ресурс партнёра. Lic. RN: 040422. Условия предложения доступны на сайте партнёра.</p>
+                    <div class="footer-links">
+                        <a class="footer-link" href="#privacy-policy" id="open-privacy">Политика конфиденциальности</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+
+        <section class="privacy-page" id="privacy-page" aria-label="Политика конфиденциальности">
+            <article class="privacy-card">
+                <div class="privacy-head">
+                    <p class="privacy-updated">Обновлено: <strong>4 сентября 2026</strong></p>
+                    <h1 class="privacy-title">Политика конфиденциальности</h1>
+                    <p class="privacy-lead">Здесь собрана основная информация о локальных настройках, аналитике и переходах на сайт партнёра.</p>
+                </div>
+                <div class="privacy-body">
+                    <section class="privacy-section">
+                        <h3>Что обрабатывается</h3>
+                        <p>На этой странице нет форм для ввода личных данных. Для оценки работы интерфейса могут учитываться просмотры, нажатия, переходы и базовые технические сведения браузера.</p>
+                    </section>
+                    <section class="privacy-section">
+                        <h3>Локальные настройки</h3>
+                        <p>Для аналитики посещений и переходов используется Vercel Insights. Сервис может применять cookies; ограничить их можно в настройках браузера или с помощью блокировщика аналитики.</p>
+                    </section>
+                    <section class="privacy-section">
+                        <h3>Сторонний сайт</h3>
+                        <p>Карточка и кнопки ведут на внешний ресурс. С момента перехода применяются документы, ограничения и правила обработки данных, опубликованные его оператором.</p>
+                    </section>
+                    <section class="privacy-section">
+                        <h3>Обновления документа</h3>
+                        <p>Формулировки могут меняться вместе с аналитикой, партнёрскими адресами или функциями страницы. Дата последней редакции всегда указана в начале документа.</p>
+                    </section>
+                    <section class="privacy-section">
+                        <h3>Вопросы</h3>
+                        <div class="privacy-questions">
+                            <div class="privacy-question">
+                                <strong>Есть ли здесь база пользователей?</strong>
+                                <span>Нет. Эта страница не создаёт и не хранит пользовательские аккаунты.</span>
+                            </div>
+                            <div class="privacy-question">
+                                <strong>Как ограничить аналитику?</strong>
+                                <span>Запретите cookies в браузере или включите средство блокировки аналитики. За данные на внешнем ресурсе отвечает его оператор.</span>
+                            </div>
+                        </div>
+                    </section>
+                    <a class="privacy-home" href="#home" id="privacy-home">Главная</a>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+
+        function trackBtn(name) {
+            if (window.va) {
+                window.va("event", { name: name });
+            }
+
+        }
+    </script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const countdown = document.getElementById("registration-countdown");
+            if (countdown) {
+                const duration = 24 * 60 * 60 * 1000;
+                const storageKey = "falling-pickaxe-countdown-end";
+                let deadline = Date.now() + duration;
+                try {
+                    const saved = Number(localStorage.getItem(storageKey));
+                    if (Number.isFinite(saved) && saved > 0 && saved <= deadline) {
+                        deadline = saved;
+                    } else {
+                        localStorage.setItem(storageKey, String(deadline));
+                    }
+                } catch (error) {
+                    // Keep the countdown usable when browser storage is unavailable.
+                }
+                const updateCountdown = () => {
+                    const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+                    const hours = Math.floor(remaining / 3600);
+                    const minutes = Math.floor((remaining % 3600) / 60);
+                    const seconds = remaining % 60;
+                    countdown.textContent = [hours, minutes, seconds]
+                        .map(value => String(value).padStart(2, "0")).join(":");
+                    if (remaining === 0) clearInterval(countdownInterval);
+                };
+                const countdownInterval = setInterval(updateCountdown, 1000);
+                updateCountdown();
+            }
+            const helpToggle = document.getElementById("help-toggle");
+            const helpContent = document.getElementById("hp");
+            const homePage = document.getElementById("home-page");
+            const privacyPage = document.getElementById("privacy-page");
+            const mobileQuickCta = document.querySelector(".mobile-quick-cta");
+            const registrationBanner = document.querySelector(".registration-banner");
+            let registrationBannerVisible = false;
+
+            helpToggle.addEventListener("click", () => {
+                const isOpen = helpToggle.getAttribute("aria-expanded") === "true";
+                helpToggle.setAttribute("aria-expanded", String(!isOpen));
+                helpContent.classList.toggle("is-open", !isOpen);
+            });
+
+            const showPrivacyPage = () => {
+                homePage.style.display = "none";
+                privacyPage.classList.add("is-open");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                syncMobileQuickCta();
+            };
+
+            const showHomePage = () => {
+                privacyPage.classList.remove("is-open");
+                homePage.style.display = "";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                syncMobileQuickCta();
+            };
+
+            const syncMobileQuickCta = () => {
+                if (!mobileQuickCta) return;
+
+                const isMobile = window.matchMedia("(max-width: 620px)").matches;
+                const isPrivacyOpen = window.location.hash === "#privacy-policy";
+                mobileQuickCta.classList.toggle("is-hidden", !isMobile || isPrivacyOpen || registrationBannerVisible);
+            };
+
+            const syncPageFromHash = () => {
+                if (window.location.hash === "#privacy-policy") {
+                    showPrivacyPage();
+                } else {
+                    showHomePage();
+                }
+            };
+
+            window.addEventListener("hashchange", syncPageFromHash);
+            syncPageFromHash();
+
+            if (mobileQuickCta && registrationBanner) {
+                const checkRegistrationPosition = () => {
+                    const rect = registrationBanner.getBoundingClientRect();
+                    registrationBannerVisible = rect.top < window.innerHeight * 0.82;
+                    syncMobileQuickCta();
+                };
+
+                window.addEventListener("scroll", checkRegistrationPosition, { passive: true });
+                window.addEventListener("resize", checkRegistrationPosition);
+                window.addEventListener("resize", syncMobileQuickCta);
+                checkRegistrationPosition();
+            }
+
+            const copyPromoButton = document.getElementById("copy-promo");
+            const promoCode = document.getElementById("promo-code");
+
+            if (copyPromoButton && promoCode) {
+                copyPromoButton.addEventListener("click", async () => {
+                    const code = promoCode.textContent.trim();
+
+                    try {
+                        await navigator.clipboard.writeText(code);
+                    } catch (error) {
+                        const fallbackInput = document.createElement("textarea");
+                        fallbackInput.value = code;
+                        fallbackInput.setAttribute("readonly", "");
+                        fallbackInput.style.position = "fixed";
+                        fallbackInput.style.opacity = "0";
+                        document.body.appendChild(fallbackInput);
+                        fallbackInput.select();
+                        document.execCommand("copy");
+                        fallbackInput.remove();
+                    }
+
+                    copyPromoButton.textContent = "Скопировано";
+                    copyPromoButton.classList.add("is-copied");
+                    setTimeout(() => {
+                        copyPromoButton.textContent = "Копировать";
+                        copyPromoButton.classList.remove("is-copied");
+                    }, 1400);
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
